@@ -1,0 +1,93 @@
+// Following code repersents various ways with whihc we can create objects in java a[art from new keyword 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.lang.*;
+import java.lang.reflect.Constructor;
+
+public class Objecttypes implements  Cloneable, Serializable {
+    String name  ;
+    int roll ;
+
+    public Objecttypes(String name, int roll) {
+        this.name = name;
+        this.roll =roll;
+    }
+
+    protected Object clone() throws  CloneNotSupportedException
+    {
+        return super.clone();
+    }
+    public Objecttypes()
+    {
+        super();
+    }
+    public static void main(String[] args)
+    {
+        //***************** CREATING OBJECT USING NEW KEYWORD *****************************
+        Objecttypes a = new Objecttypes();
+        a.name = "Rahul";
+        a.roll = 3046;
+        System.out.println("Using 'new' keyword");
+        System.out.printf("Name : %s \t Roll number : %d\n",a.name, a.roll);
+        //***************** CREATING OBJECT USING "class.newInstance()" ************************
+        try {
+          Objecttypes b = Objecttypes.class.newInstance();
+          b.name = "Rajesh";
+          b.roll =  9999;
+            System.out.println("Using 'newInstance()' method");
+            System.out.printf("Name : %s \t Roll number : %d\n",b.name, b.roll);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        //****************** CREATING OBJECT USING 'newInstance()'in constructor *******************
+        try {
+            Constructor<Objecttypes> c1 = Objecttypes.class.getConstructor();
+            Objecttypes c = c1.newInstance();
+            c.name = "Kiran";
+            c.roll = 3039;
+            System.out.println("Using 'newInstance()' in constructor class method");
+            System.out.printf("Name : %s \t Roll number : %d\n",c.name, c.roll);
+
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        //********************** CREATING OBJECT USING CLONE METHOD ********************************
+        try{
+            Objecttypes d = new Objecttypes();
+            d.name = "Ruthvik";
+            d.roll = 3009;
+            System.out.println("Using  Clone() class method");
+            System.out.printf("Name : %s \t Roll number : %d\n",d.name, d.roll);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        //******************** USING SERIALIZATION AND DESRIALIZATION ******************************
+        Objecttypes e1 = new Objecttypes("xxxxxx",3455);
+        String filename = "demo.txt";
+        try
+        {
+            FileOutputStream file = new FileOutputStream(filename);
+            ObjectOutputStream out = new ObjectOutputStream(file);
+            out.writeObject(e1);
+            System.out.println("Object serialized");
+        }
+        catch(IOException e)
+        {
+            e.printStackTrace();
+        }
+        Objecttypes obj = null;
+
+
+    }
+
+
+
+}
