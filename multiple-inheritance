@@ -1,0 +1,23 @@
+interface Roll {
+    void printroll();
+}
+interface Name{
+    void printname();
+}
+public class Interfaces implements Roll , Name{
+    @Override
+    public void printroll() {
+         System.out.println("3046");
+    }
+
+    @Override
+    public void printname() {
+       System.out.println("Rahul Kumar Chaturvedi ");
+    }
+    public static void main(String[] args)
+    {
+        Interfaces obj = new Interfaces();
+        obj.printroll();
+        obj.printname();
+    }
+}
