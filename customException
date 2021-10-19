@@ -1,0 +1,20 @@
+import java.util.Objects;
+import java.util.Scanner;
+public class Student{
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        String name = sc.nextLine();
+        try{
+            if(!Objects.equals(name,"Rahul") )throw new IllegalNameException();
+        }
+        catch (IllegalNameException i ){
+
+        }
+    }
+}
+class IllegalNameException extends  Exception{
+    public IllegalNameException(){
+        System.out.println("Illegal Name");
+    }
+}
