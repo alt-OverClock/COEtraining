@@ -1,0 +1,22 @@
+interface Student1{
+    void showstuName();
+    interface Roll{
+        void roll();
+    }
+}
+public class Nestedinterface implements Student1.Roll{
+
+    public void roll(){
+        System.out.println("221810303046");
+    }
+
+    public void showstuName(){
+        System.out.println("Rahul Kumar Chaturvedi ");
+    }
+    public static void main(String[] args)
+    {
+        Nestedinterface ob = new Nestedinterface();
+        ob.roll();
+        ob.showstuName();
+    }
+}
